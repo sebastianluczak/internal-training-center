@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conference Guestbook{% endblock %}
+
+{% block body %}
+    <h2 class="mb-5">
+        Here's couple of questions for Symfony and PHP
+    </h2>
+
+
+        <div class="container-fluid">
+            {% for question in questions.all %}
+               <div class="col-12">
+                    <div class="card lift" style="margin: 50px">
+                        <div class="card-body">
+                            <div class="text-left">
+                                <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+                                <p>
+                                    <strong>[{{ question.category }}]</strong> {{ question.question }}
+                                </p>
+                            </div>
+
+                            <hr />
+
+                            <div class="card-text">
+                                <p>
+                                    {{ question.help }}
+                                </p>
+                            </div>
+                            <form class="px-4" action="">
+                                <p class="text-left"><strong>Your answer:</strong></p>
+
+                                {% for key,answer in question.answers %}
+                                    <input class="form-check-input" type="radio" name="exampleForm{{ key }}" id="radio2Example1{{ key }}" />
+
+                                    <label class="form-check-label" for="radio2Example1{{ key }}">
+                                        {{ answer.value }}
+                                    </label>
+
+                                    <br/>
+                                {% endfor %}
+                            </form>
+                        </div>
+                        <div class="card-footer text-end">
+                            <button type="button" class="btn btn-primary" onclick="validateForm(this.parentNode.parentNode)">Answer</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function validateForm(question)
+        {
+            let all = question.querySelectorAll("div");
+            let random = Math.random();
+            if (random >= 0.5) {
+                all.forEach(item => item.classList.add("alert-success"));
+            } else {
+                all.forEach(item => item.classList.add("alert-danger"));
+            }
+        }
+    </script>
+{% endblock %}

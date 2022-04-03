@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card lift" style="width: 18rem;">
+                    <img src="https://logowik.com/content/uploads/images/php.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">PHP Questions</h5>
+                        <p class="card-text">
+                            From basic ones to complicated and near-impossible to solve. Take your time with this. :-)
+
+                        <div class="alert alert-primary font-monospace" role="alert">
+                            Questions available: {{ allquestions.count }}
+                        </div>
+                        </p>
+                        <a href="#" class="btn btn-primary">Take PHP Quiz</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card lift" style="width: 18rem;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Symfony2.svg/1280px-Symfony2.svg.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Symfony Questions</h5>
+                        <p class="card-text">
+                            Symfony questions based on real certification course.
+
+                        <div class="alert alert-primary font-monospace" role="alert">
+                            Questions available: {{ allquestions.count }}
+                        </div>
+                        </p>
+                        <a href="{{ path('training_symfony') }}" class="btn btn-primary">Take Symfony Quiz</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card lift" style="width: 18rem;">
+                    <img src="https://www.vectorlogo.zone/logos/angular/angular-ar21.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Angular Questions</h5>
+                        <p class="card-text">
+                            Coming soon!
+
+                        <div class="alert alert-primary font-monospace" role="alert">
+                            Questions available: 0
+                        </div>
+                        </p>
+                        <a href="#" class="btn btn-primary btn-dark" disabled="disabled">Coming soon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
