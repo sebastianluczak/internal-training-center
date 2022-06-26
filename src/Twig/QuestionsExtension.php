@@ -19,7 +19,6 @@ class QuestionsExtension extends AbstractExtension
 
     public function getQuestionsCountForTopic($value)
     {
-
         return 12;
     }
 }

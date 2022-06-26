@@ -24,7 +24,7 @@ up:
 	$(DC) up -d
 
 go_bash:
-	@$(RUN) bash
+	@$(RUN) php bin/console app:start
 
 vendor: composer.lock
 	@$(RUN) composer install

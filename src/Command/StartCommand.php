@@ -48,7 +48,7 @@ class StartCommand extends Command
             ->setName('start')
             ->setDescription('Starts a new question set')
             ->addArgument('categories', InputArgument::IS_ARRAY, 'Which categories do you want (separate multiple with a space)', [])
-            ->addOption('number', null, InputOption::VALUE_OPTIONAL, 'How many questions do you want?', '20')
+            ->addOption('number', null, InputOption::VALUE_OPTIONAL, 'How many questions do you want?', '5')
             ->addOption('list', 'l', InputOption::VALUE_NONE, 'List categories')
             ->addOption('training', null, InputOption::VALUE_NONE, 'Training mode: the solution is displayed after each question')
             ->addOption('hide-multiple-choice', null, InputOption::VALUE_NONE, 'Should we hide the information that the question is multiple choice?')
@@ -64,13 +64,9 @@ class StartCommand extends Command
         $config = $this->path(is_string($input->getOption('config')) ? $input->getOption('config') : null);
         $config = "config.yml";
         $fileContent = (string) file_get_contents($config);
-        dump($fileContent);
         $paths = Yaml::parse($fileContent);
 
         $yamlLoader = new Loader($paths);
-
-        dump($yamlLoader->categories());
-
         if ($input->getOption('list')) {
             $output->writeln($yamlLoader->categories());
 
